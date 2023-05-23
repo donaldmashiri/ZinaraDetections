@@ -8,15 +8,6 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-//use OpenCV\CV\Mat;
-//use OpenCV\CV\Scalar;
-//use OpenCV\OpenCV;
-//namespace App\OpenCV;
-
-//use OpenCV;
-//use OpenCV\CV\Scalar;
-//use ;
-//namespace App\opencv;
 
 class DetectionsController extends Controller
 {

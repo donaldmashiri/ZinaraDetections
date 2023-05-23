@@ -26,10 +26,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "classmap": [
-            "app/opencv"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -63,28 +60,6 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
-        }
-    },
-    "repositories": [
-        {
-            "packagist": false
-        },
-        {
-            "type": "composer",
-            "url": "https://packagist.org",
-            "options": {
-                "ssl": {
-                    "verify_peer": true
-                }
-            }
-        }
-    ],
-    "packagist": {
-        "url": "https://repo.your-preferred-mirror.org",
-        "options": {
-            "ssl": {
-                "verify_peer": true
-            }
         }
     },
     "minimum-stability": "stable",
