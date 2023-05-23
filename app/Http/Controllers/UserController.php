@@ -37,9 +37,11 @@ class UserController extends Controller
             "dob" => request('dob'),
             ]);
 
-        session()->flash('success', 'Driver Successfully added.');
+        return redirect()->back()->with('success', 'Driver Successfully added.');
 
-        return view('users.index')->with('users', User::all());
+//        session()->flash('success', 'Driver Successfully added.');
+//
+//        return view('users.index')->with('users', User::all());
     }
 
     /**

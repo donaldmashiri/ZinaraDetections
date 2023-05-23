@@ -26,9 +26,9 @@ class VideoDetectController extends Controller
      */
     public function create()
     {
-        $cmd = 'start cmd /k "python main.py"';
-        exec($cmd);
-        return "opened ";
+//        $cmd = 'start cmd /k "python main.py"';
+//        exec($cmd);
+//        return "opened ";
     }
 
     /**
@@ -36,9 +36,9 @@ class VideoDetectController extends Controller
      */
     public function store(Request $request)
     {
-//        $cmd = 'start cmd /k "python main.py"';
-//        exec($cmd);
-//        return redirect()->back()->with('success', 'Camera View detection Uploaded.');
+        $cmd = 'start cmd /k "python main.py"';
+        exec($cmd);
+        return redirect()->back()->with('success', 'Camera View detection Uploaded.');
     }
 
     /**
