@@ -36,6 +36,12 @@ class VideoDetectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'upload_video' => 'required|file|mimes:mp4,mov|max:5000', // Adjust the validation rules as needed
+        ]);
+
+        $file = $request->input('file');
+
         $cmd = 'start cmd /k "python main.py"';
         exec($cmd);
         return redirect()->back()->with('success', 'Camera View detection Uploaded.');

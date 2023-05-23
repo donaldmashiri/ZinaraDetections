@@ -66,7 +66,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Upload Video</label> <br>
-                                    <input type="file" class="form-control" name="video">
+                                    <input type="file" class="form-control" name="upload_video">
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">Upload</button>
                             </form>
@@ -140,8 +140,6 @@
                                                         document.getElementById("lane-crossing-alert").innerText = hasCrossedOver() ? "Yes" : "No";
                                                         document.getElementById("driver-tendencies").innerText = generateDriverTendencies();
                                                     </script>
-
-
 
                                                 </div>
                                             </div>
