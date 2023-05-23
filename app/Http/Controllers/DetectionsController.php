@@ -65,11 +65,9 @@ class DetectionsController extends Controller
             'cross_alert' => $cross_alert,
             'driver_tendencies' => $driver_tendencies,
             ]);
-
-
-
-//        $cmd = 'start cmd /k "python camera.py"';
-//        exec($cmd);
+        
+        $cmd = 'start cmd /k "python camera.py"';
+        exec($cmd);
         return redirect()->back()->with('success', 'Detection was successfully');
     }
 
