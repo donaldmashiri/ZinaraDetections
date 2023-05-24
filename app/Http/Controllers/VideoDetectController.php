@@ -44,7 +44,7 @@ class VideoDetectController extends Controller
 
         $cmd = 'start cmd /k "python main.py"';
         exec($cmd);
-        return redirect()->back()->with('success', 'Camera View detection Uploaded.');
+        return redirect()->back()->with('success', 'Video upload detection Uploaded.');
     }
 
     /**
