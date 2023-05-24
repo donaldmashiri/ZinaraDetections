@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -61,12 +63,17 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = \DB::table('users')->where('id', $id)->first();
-        $vehicles = \DB::table('vehicles')->where('id', $id)->get();
+        $vehicles = Vehicle::where('user_id', $id)->get();
+        $user = User::find($id);
+        return view('users.show', compact('vehicles', 'user'));
 
-        return view('users.show')
-            ->with('user', $user)
-            ->with('vehicles', $vehicles);
+
+//        $user = \DB::table('users')->where('id', $id)->get();
+//        $vehicles = \DB::table('vehicles')->where('id', $id)->get();
+//
+//        return view('users.show')
+//            ->with('user', $user)
+//            ->with('vehicles', $vehicles);
     }
 
     /**

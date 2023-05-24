@@ -36,37 +36,42 @@
                             <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-header font-weight-bolder">User Vehicles</div>
-                                    <div class="card-body">
-                                        <table class="table table-bordered table-sm">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">Year</th>
-                                                <th scope="col">Make</th>
-                                                <th scope="col">Model</th>
-                                                <th scope="col">plate_number</th>
-                                                <th scope="col">engine_number</th>
-                                                <th scope="col">Date added</th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($vehicles as $vehicle)
+                                        <div class="card-body">
+                                            @if($vehicles->count()> 0)
+                                            <table class="table table-bordered table-sm">
+                                                <thead>
                                                 <tr>
-                                                    <th>{{ $vehicle->year }}</th>
-                                                    <th>{{ $vehicle->make }}</th>
-                                                    <th>{{ $vehicle->model }}</th>
-                                                    <th>{{ $vehicle->plate_number }}</th>
-                                                    <th>{{ $vehicle->engine_number }}</th>
-                                                    <th>{{ $vehicle->created_at }}</th>
-                                                    <td>
-                                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-warning btn-sm">Edit</a>
-                                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-danger btn-warning btn-sm">Delete</a>
-                                                    </td>
+                                                    <th scope="col">Year</th>
+                                                    <th scope="col">Make</th>
+                                                    <th scope="col">Model</th>
+                                                    <th scope="col">plate_number</th>
+                                                    <th scope="col">engine_number</th>
+                                                    <th scope="col">Date added</th>
+                                                    <th scope="col"></th>
                                                 </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($vehicles as $vehicle)
+                                                    <tr>
+                                                        <th>{{ $vehicle->year }}</th>
+                                                        <th>{{ $vehicle->make }}</th>
+                                                        <th>{{ $vehicle->model }}</th>
+                                                        <th>{{ $vehicle->plate_number }}</th>
+                                                        <th>{{ $vehicle->engine_number }}</th>
+                                                        <th>{{ $vehicle->created_at }}</th>
+                                                        <td>
+                                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-warning btn-sm">Edit</a>
+                                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-danger btn-warning btn-sm">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                            @else
+                                                <h3 class='text-center alert alert-danger'>No Vehicles added</h3>
+                                            @endif
+                                        </div>
+
                                 </div>
                             </div>
                             <div class="col-md-4">
