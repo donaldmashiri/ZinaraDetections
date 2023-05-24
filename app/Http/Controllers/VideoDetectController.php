@@ -37,7 +37,7 @@ class VideoDetectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'upload_video' => 'required|file|mimes:mp4,mov|max:5000', // Adjust the validation rules as needed
+            'upload_video' => 'required|file|mimes:mp4,mov', // Adjust the validation rules as needed
         ]);
 
         $file = $request->input('file');
