@@ -30,6 +30,14 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'make' => ['required', 'string', 'max:255'],
+            'model' => ['required', 'string', 'max:255'],
+            'year' => ['required', 'string', 'max:255'],
+            'engine_number' => ['required', 'string', 'max:255', 'unique:vehicles'],
+            'plate_number' => ['required', 'string', 'max:255', 'unique:vehicles'],
+        ]);
+
         Vehicle::create([
             "user_id" => request('user_id'),
             "make" => request('make'),

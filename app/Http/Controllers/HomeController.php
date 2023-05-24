@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CameraDetection;
 use App\Models\Marking;
 use App\Models\User;
 use App\Models\Vehicle;
@@ -39,7 +40,8 @@ class HomeController extends Controller
         $usersTotal = User::count();
         $vehiclesTotal = Vehicle::count();
         $markingsTotal = Marking::count();
-        return view('reports', compact('usersTotal', 'vehiclesTotal', 'markingsTotal'));
+        $cameraDetections =  CameraDetection::all();
+        return view('reports', compact('usersTotal', 'vehiclesTotal', 'markingsTotal', 'cameraDetections'));
     }
 
 }
