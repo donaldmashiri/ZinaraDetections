@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('video_detections', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('plate_number');
+            $table->string('plate_number')->nullable();
+            $table->text('file')->nullable();
             $table->string('detection_type');
             $table->string('status');
             $table->string('signal_type');

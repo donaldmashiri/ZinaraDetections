@@ -18,7 +18,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>{{ Auth::user()->role }}</span></a>
         </li>

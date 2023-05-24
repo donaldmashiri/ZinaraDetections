@@ -26,7 +26,7 @@
                         <div class="row">
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-2 col-md-3 mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -44,7 +44,7 @@
                             </div>
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-2 col-md-3 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -62,7 +62,7 @@
                             </div>
 
                             <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="col-xl-2 col-md-3 mb-4">
                                 <div class="card border-left-info shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -91,36 +91,126 @@
                             </div>
 
                             <!-- Pending Requests Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="col-xl-2 col-md-3 mb-4">
+                                <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                    Pending Requests</div>
+                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                    Camera Detections</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                                <i class="fas fa-camera fa-2x text-gray-300"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-xl-2 col-md-3 mb-4">
+                                <div class="card border-left-dark shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                    Video Detections</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-video fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
-                        <!-- Content Row -->
+                        <!-- Camera Row -->
                         <div class="row">
                            <div class="col-md-12">
                                <div class="card">
                                    <div class="card-header bg-gradient-dark">Camera Detection Reports</div>
                                    <div class="card-body">
-                                       <table>
-
+                                       <table class="table table-bordered table-sm">
+                                           <thead class="bg-gradient-light">
+                                           <tr>
+                                               <th scope="col">User ID</th>
+                                               <th scope="col">Plate #</th>
+                                               <th scope="col">Detection Type</th>
+                                               <th scope="col">Status</th>
+                                               <th scope="col">Signals Type</th>
+                                               <th scope="col">Lane</th>
+                                               <th scope="col">Wheels Crossed</th>
+                                               <th scope="col">Markings Color</th>
+                                               <th scope="col">Cross Alert</th>
+                                               <th scope="col">Driver tendencies</th>
+                                           </tr>
+                                           </thead>
+                                           <tbody>
+                                           @foreach($cameraDetections as $cameraDetection)
+                                               <tr>
+                                                   <th>00{{ $cameraDetection->user_id }}</th>
+                                                   <th>{{ $cameraDetection->plate_number }}</th>
+                                                   <th class="text-success">Camera Detection</th>
+                                                   <th>{{ $cameraDetection->status }}</th>
+                                                   <th>{{ $cameraDetection->signal_type }}</th>
+                                                   <th>{{ $cameraDetection->lane_position }}</th>
+                                                   <th>{{ $cameraDetection->wheel_crossed }}</th>
+                                                   <th>{{ $cameraDetection->marking_color }}</th>
+                                                   <th>{{ $cameraDetection->cross_alert }}</th>
+                                                   <th>{{ $cameraDetection->driver_tendencies }}</th>
+                                               </tr>
+                                           @endforeach
+                                           </tbody>
                                        </table>
                                    </div>
                                </div>
                            </div>
+                        </div>
+
+                        <!-- Video Row -->
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header bg-gradient-light">Video Detection Reports</div>
+                                    <div class="card-body">
+                                        <table class="table table-bordered table-sm">
+                                            <thead class="bg-gradient-dark">
+                                            <tr>
+                                                <th scope="col">User ID</th>
+                                                <th scope="col">Plate #</th>
+                                                <th scope="col">Detection Type</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Signals Type</th>
+                                                <th scope="col">Lane</th>
+                                                <th scope="col">Wheels Crossed</th>
+                                                <th scope="col">Markings Color</th>
+                                                <th scope="col">Cross Alert</th>
+                                                <th scope="col">Driver tendencies</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($videoDetections as $videoDetection)
+                                                <tr>
+                                                    <th>00{{ $videoDetection->user_id }}</th>
+                                                    <th>{{ $videoDetection->plate_number }}</th>
+                                                    <th class="text-danger">Video Detection</th>
+                                                    <th>{{ $videoDetection->status }}</th>
+                                                    <th>{{ $videoDetection->signal_type }}</th>
+                                                    <th>{{ $videoDetection->lane_position }}</th>
+                                                    <th>{{ $videoDetection->wheel_crossed }}</th>
+                                                    <th>{{ $videoDetection->marking_color }}</th>
+                                                    <th>{{ $videoDetection->cross_alert }}</th>
+                                                    <th>{{ $videoDetection->driver_tendencies }}</th>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

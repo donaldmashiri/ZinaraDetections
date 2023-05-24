@@ -59,10 +59,10 @@
                                                         <th>{{ $vehicle->plate_number }}</th>
                                                         <th>{{ $vehicle->engine_number }}</th>
                                                         <th>{{ $vehicle->created_at }}</th>
-                                                        <td>
-                                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-warning btn-sm">Edit</a>
-                                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-danger btn-warning btn-sm">Delete</a>
-                                                        </td>
+{{--                                                        <td>--}}
+{{--                                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-warning btn-sm">Edit</a>--}}
+{{--                                                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-danger btn-warning btn-sm">Delete</a>--}}
+{{--                                                        </td>--}}
                                                     </tr>
                                                 @endforeach
                                                 </tbody>

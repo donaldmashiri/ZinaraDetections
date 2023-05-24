@@ -6,6 +6,7 @@ use App\Models\CameraDetection;
 use App\Models\Marking;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\VideoDetection;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,8 +41,11 @@ class HomeController extends Controller
         $usersTotal = User::count();
         $vehiclesTotal = Vehicle::count();
         $markingsTotal = Marking::count();
+        $cameraDetectionsTotal = CameraDetection::count();
         $cameraDetections =  CameraDetection::all();
-        return view('reports', compact('usersTotal', 'vehiclesTotal', 'markingsTotal', 'cameraDetections'));
+        $videoDetections =  VideoDetection::all();
+        return view('reports', compact('usersTotal', 'vehiclesTotal', 'markingsTotal', 'cameraDetectionsTotal',
+            'cameraDetections', 'videoDetections'));
     }
 
 }
