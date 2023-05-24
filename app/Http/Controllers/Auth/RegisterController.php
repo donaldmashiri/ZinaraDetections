@@ -66,15 +66,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $role = 'vehicle';
-        return User::create([
-            'role' => $role,
-            'name' => $data['name'],
-            'national_id' => $data['national_id'],
-            'dob' => $data['dob'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+//        $role = 'vehicle';
+//        return User::create([
+//            'role' => $role,
+//            'name' => $data['name'],
+//            'national_id' => $data['national_id'],
+//            'dob' => $data['dob'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
+//        ]);
 
 //        return redirect()->back()->with('success', 'Detection was successfully');
 

@@ -35,11 +35,12 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'national_id' => ['required', 'string', 'max:14', 'unique:users'],
-            'dob' => ['required', 'string', 'max:255', 'unique:users'],
+            'dob' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $role = 'vehicle';
+        $role = 'driver';
+        $password = $request->input('password');
 
         User::create([
             "role" => $role,
@@ -47,7 +48,7 @@ class UserController extends Controller
             "email" => request('email'),
             "national_id" => request('national_id'),
             "dob" => request('dob'),
-            'password' => Hash::make('password')
+            'password' => Hash::make($password)
             ]);
 
         return redirect()->back()->with('success', 'Account succesfully created.');
