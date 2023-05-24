@@ -30,14 +30,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'upload_video' => 'required|file|mimes:mp4,mov|max:5000',
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'national_id' => ['required', 'string', 'max:255', 'unique:users'],
+            'national_id' => ['required', 'string', 'max:14', 'unique:users'],
             'dob' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
 
         $role = 'vehicle';
 
