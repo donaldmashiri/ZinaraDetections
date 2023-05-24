@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,16 +29,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'upload_video' => 'required|file|mimes:mp4,mov|max:5000',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'national_id' => ['required', 'string', 'max:255', 'unique:users'],
+            'dob' => ['required', 'string', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+
         $role = 'vehicle';
+
         User::create([
             "role" => $role,
             "name" => request('name'),
             "email" => request('email'),
             "national_id" => request('national_id'),
             "dob" => request('dob'),
+            'password' => Hash::make('password')
             ]);
 
-        return redirect()->back()->with('success', 'Driver Successfully added.');
+        return redirect()->back()->with('success', 'Account succesfully created.');
+//        return redirect()->back()->with('success', 'Driver Successfully added.');
 
 //        session()->flash('success', 'Driver Successfully added.');
 //

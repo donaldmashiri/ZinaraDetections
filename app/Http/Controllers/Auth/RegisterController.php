@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+//    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -52,6 +52,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'national_id' => ['required', 'string', 'max:255', 'unique:users'],
+            'dob' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role = 'vehicle';
         return User::create([
+            'role' => $role,
             'name' => $data['name'],
+            'national_id' => $data['national_id'],
+            'dob' => $data['dob'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+//        return redirect()->back()->with('success', 'Detection was successfully');
+
     }
 }
