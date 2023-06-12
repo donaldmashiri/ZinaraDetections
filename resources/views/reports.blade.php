@@ -133,6 +133,7 @@
                                <div class="card">
                                    <div class="card-header bg-gradient-dark">Camera Detection Reports</div>
                                    <div class="card-body">
+
                                        <table class="table table-bordered table-sm">
                                            <thead class="bg-gradient-light">
                                            <tr>
@@ -176,7 +177,30 @@
                                 <div class="card">
                                     <div class="card-header bg-gradient-light">Video Detection Reports</div>
                                     <div class="card-body">
-                                        <table class="table table-bordered table-sm">
+                                        <div class="container">
+                                            <h6>Filter Options</h6>
+                                           <div class="row">
+                                               <div class="col">
+                                                   <input class="form-control form-group col" type="text" id="filterUserId" placeholder="User ID">
+                                               </div>
+                                               <div class="col">
+                                                   <input class="form-control form-group col" type="text" id="filterPlateNumber" placeholder="Plate Number">
+                                               </div>
+                                               <div class="col">
+                                                   <select class="form-control form-group col" id="filterStatus">
+                                                       <option value="">Select Status</option>
+                                                       <option value="inactive">Inactive</option>
+                                                       <option value="active">Active</option>
+                                                   </select>
+                                               </div>
+                                               <div class="col">
+                                                   <button class="btn btn-dark btn-sm" onclick="filterTable()">Filter</button>
+                                               </div>
+                                           </div>
+
+                                        </div>
+
+                                        <table id="videoDetectionTable" class="table table-bordered table-sm">
                                             <thead class="bg-gradient-dark">
                                             <tr>
                                                 <th scope="col">User ID</th>
@@ -194,20 +218,51 @@
                                             <tbody>
                                             @foreach($videoDetections as $videoDetection)
                                                 <tr>
-                                                    <th>00{{ $videoDetection->user_id }}</th>
-                                                    <th>{{ $videoDetection->plate_number }}</th>
-                                                    <th class="text-danger">Video Detection</th>
-                                                    <th>{{ $videoDetection->status }}</th>
-                                                    <th>{{ $videoDetection->signal_type }}</th>
-                                                    <th>{{ $videoDetection->lane_position }}</th>
-                                                    <th>{{ $videoDetection->wheel_crossed }}</th>
-                                                    <th>{{ $videoDetection->marking_color }}</th>
-                                                    <th>{{ $videoDetection->cross_alert }}</th>
-                                                    <th>{{ $videoDetection->driver_tendencies }}</th>
+                                                    <td>00{{ $videoDetection->user_id }}</td>
+                                                    <td>{{ $videoDetection->plate_number }}</td>
+                                                    <td class="text-danger">Video Detection</td>
+                                                    <td>{{ $videoDetection->status }}</td>
+                                                    <td>{{ $videoDetection->signal_type }}</td>
+                                                    <td>{{ $videoDetection->lane_position }}</td>
+                                                    <td>{{ $videoDetection->wheel_crossed }}</td>
+                                                    <td>{{ $videoDetection->marking_color }}</td>
+                                                    <td>{{ $videoDetection->cross_alert }}</td>
+                                                    <td>{{ $videoDetection->driver_tendencies }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
                                         </table>
+
+                                        <script>
+                                            function filterTable() {
+                                                var userId = document.getElementById('filterUserId').value.toLowerCase();
+                                                var plateNumber = document.getElementById('filterPlateNumber').value.toLowerCase();
+                                                var status = document.getElementById('filterStatus').value.toLowerCase();
+                                                var table = document.getElementById('videoDetectionTable');
+                                                var rows = table.getElementsByTagName('tr');
+
+                                                for (var i = 0; i < rows.length; i++) {
+                                                    var userIdCell = rows[i].getElementsByTagName('td')[0];
+                                                    var plateNumberCell = rows[i].getElementsByTagName('td')[1];
+                                                    var statusCell = rows[i].getElementsByTagName('td')[3];
+
+                                                    if (userIdCell && plateNumberCell && statusCell) {
+                                                        var userIdValue = userIdCell.textContent || userIdCell.innerText;
+                                                        var plateNumberValue = plateNumberCell.textContent || plateNumberCell.innerText;
+                                                        var statusValue = statusCell.textContent || statusCell.innerText;
+
+                                                        if ((userIdValue.toLowerCase().indexOf(userId) > -1 || userId === '') &&
+                                                            (plateNumberValue.toLowerCase().indexOf(plateNumber) > -1 || plateNumber === '') &&
+                                                            (statusValue.toLowerCase() === status || status === '')) {
+                                                            rows[i].style.display = '';
+                                                        } else {
+                                                            rows[i].style.display = 'none';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </script>
+
                                     </div>
                                 </div>
                             </div>

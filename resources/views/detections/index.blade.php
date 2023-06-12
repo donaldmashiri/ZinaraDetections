@@ -93,8 +93,6 @@
                                         }
                                     </script>
 
-
-{{--                                    <button type="submit" class="btn btn-primary btn-sm">Start Detection</button>--}}
                                 </form>
                             </div>
                             <div class="col-md-6">

@@ -64,11 +64,36 @@
 
                             <form action="{{route('videodetects.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <label>Selected Plate Number </label>
+                                <input type="text" id="plateNumberInput" name="plate_number" value="" required>
+
                                 <div class="form-group">
                                     <label for="">Upload Video</label> <br>
                                     <input type="file" class="form-control" name="upload_video">
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+
+                                <script>
+                                    function setPlateNumber(event) {
+                                        event.preventDefault();
+
+                                        var plateNumber = event.target.getAttribute('href');
+                                        document.getElementById('plateNumberInput').value = plateNumber;
+                                        checkPlateNumber();
+                                    }
+
+                                    function checkPlateNumber() {
+                                        var plateNumberInput = document.getElementById('plateNumberInput');
+                                        var startDetectionButton = document.getElementById('startDetectionButton');
+
+                                        if (plateNumberInput.value.trim() === '') {
+                                            startDetectionButton.disabled = true;
+                                        } else {
+                                            startDetectionButton.disabled = false;
+                                        }
+                                    }
+                                </script>
+
                             </form>
 
                             <div class="row">
@@ -79,23 +104,39 @@
                                                 <div class="card-header bg-gradient-danger text-white">Detection Results</div>
                                                 <div class="card-body">
                                                     <table class="table table-striped table-bordered">
+
+                                                        @if(session()->has('videodetect'))
+                                                            @php
+                                                                $videodetect = session('videodetect');
+                                                            @endphp
+
+                                                            <h2>Video Detection Details</h2>
+                                                            <p>User ID: {{ $videodetect->user_id }}</p>
+                                                            <p>Plate Number: {{ $videodetect->plate_number }}</p>
+                                                            <p>Detection Type: {{ $videodetect->detection_type }}</p>
+                                                            <!-- Output other properties as needed -->
+
+                                                            <tr>
+                                                                <th scope="col">Status</th>
+                                                                <td class="text-info fw-bolder"> {{ $videodetect->status }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">Signal Type</th>
+                                                                <td class="bg-success text-white"> {{ $videodetect->signal_type }} </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">Lane Position</th>
+                                                                <td class="text-success fw-bolder">{{ $videodetect->lane_position  }} </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="col">Wheel Crossed Over</th>
+                                                                <td>{{ $videodetect->wheel_crossed  }}</td>
+                                                            </tr>
+
+                                                        @endif
+
                                                         <thead>
-                                                        <tr>
-                                                            <th scope="col">Status</th>
-                                                            <td class="text-info fw-bolder">Car Stopped</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">Signal Type</th>
-                                                            <td class="bg-success text-white"> Green </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">Lane Position</th>
-                                                            <td class="text-success fw-bolder"> Left Lane </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="col">Wheel Crossed Over</th>
-                                                            <td>No</td>
-                                                        </tr>
+
                                                         </thead>
                                                         <tbody>
                                                         <tr>

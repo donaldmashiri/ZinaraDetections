@@ -59,7 +59,7 @@ class VideoDetectController extends Controller
         $driver_tendencies = ['Frequent Lane Crossings', 'Occasional Lane Crossings', 'Rare Lane Crossings'][array_rand(['Frequent Lane Crossings', 'Occasional Lane Crossings', 'Rare Lane Crossings'])];
 
         // Create a new CameraDetection record
-        VideoDetection::create([
+        $videodetect = VideoDetection::create([
             'user_id' => $user_id,
             'plate_number' => $plate_number,
             'detection_type' => $detection_type,
@@ -75,7 +75,9 @@ class VideoDetectController extends Controller
 
         $cmd = 'start cmd /k "python main.py"';
         exec($cmd);
-        return redirect()->back()->with('success', 'Video upload detection Uploaded.');
+        return redirect()->back()->with(['success' => 'Video upload detection Uploaded.', 'videodetect' => $videodetect]);
+
+//        return redirect()->back()->with('success', 'Video upload detection Uploaded.');
     }
 
     /**

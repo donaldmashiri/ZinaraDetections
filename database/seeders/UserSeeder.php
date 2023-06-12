@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         if(!$user){
             User::create([
                 'role' => 'admin',
-                'name' => 'Donnie Angel',
+                'name' => 'Calton',
                 'email' => 'admin@admin.com',
                 'national_id' => '12345678',
                 'dob' => 'ZinaraOffice',
