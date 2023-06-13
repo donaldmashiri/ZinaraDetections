@@ -90,7 +90,7 @@
                                 </div>
                             </div>
 
-                            <!-- Pending Requests Card Example -->
+{{--                            <!-- Pending Requests Card Example -->--}}
                             <div class="col-xl-2 col-md-3 mb-4">
                                 <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
@@ -98,7 +98,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                     Camera Detections</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $cameraDetectionsTotal }}</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-camera fa-2x text-gray-300"></i>
@@ -115,7 +115,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                                     Video Detections</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $videoDetectionsTotal }}</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-video fa-2x text-gray-300"></i>
@@ -133,8 +133,29 @@
                                <div class="card">
                                    <div class="card-header bg-gradient-dark">Camera Detection Reports</div>
                                    <div class="card-body">
+                                       <div class="container">
+                                           <h6>Filter Options</h6>
+                                           <div class="row">
+                                               <div class="col">
+                                                   <input class="form-control form-group col" type="text" id="filterUserId" placeholder="User ID">
+                                               </div>
+                                               <div class="col">
+                                                   <input class="form-control form-group col" type="text" id="filterPlateNumber" placeholder="Plate Number">
+                                               </div>
+                                               <div class="col">
+                                                   <select class="form-control form-group col" id="filterStatus">
+                                                       <option value="">Select Status</option>
+                                                       <option value="inactive">Inactive</option>
+                                                       <option value="active">Active</option>
+                                                   </select>
+                                               </div>
+                                               <div class="col">
+                                                   <button class="btn btn-dark btn-sm" onclick="filterTable()">Filter</button>
+                                               </div>
+                                           </div>
+                                       </div>
 
-                                       <table class="table table-bordered table-sm">
+                                       <table id="cameraDetectionTable" class="table table-bordered table-sm">
                                            <thead class="bg-gradient-light">
                                            <tr>
                                                <th scope="col">User ID</th>
@@ -166,7 +187,41 @@
                                            @endforeach
                                            </tbody>
                                        </table>
+
+                                       {{ $cameraDetections->links() }}
+
                                    </div>
+
+                                   <script>
+                                       function filterTable() {
+                                           var userId = document.getElementById('filterUserId').value.toLowerCase();
+                                           var plateNumber = document.getElementById('filterPlateNumber').value.toLowerCase();
+                                           var status = document.getElementById('filterStatus').value.toLowerCase();
+                                           var table = document.getElementById('videoDetectionTable');
+                                           var rows = table.getElementsByTagName('tr');
+
+                                           for (var i = 0; i < rows.length; i++) {
+                                               var userIdCell = rows[i].getElementsByTagName('td')[0];
+                                               var plateNumberCell = rows[i].getElementsByTagName('td')[1];
+                                               var statusCell = rows[i].getElementsByTagName('td')[3];
+
+                                               if (userIdCell && plateNumberCell && statusCell) {
+                                                   var userIdValue = userIdCell.textContent || userIdCell.innerText;
+                                                   var plateNumberValue = plateNumberCell.textContent || plateNumberCell.innerText;
+                                                   var statusValue = statusCell.textContent || statusCell.innerText;
+
+                                                   if ((userIdValue.toLowerCase().indexOf(userId) > -1 || userId === '') &&
+                                                       (plateNumberValue.toLowerCase().indexOf(plateNumber) > -1 || plateNumber === '') &&
+                                                       (statusValue.toLowerCase() === status || status === '')) {
+                                                       rows[i].style.display = '';
+                                                   } else {
+                                                       rows[i].style.display = 'none';
+                                                   }
+                                               }
+                                           }
+                                       }
+                                   </script>
+
                                </div>
                            </div>
                         </div>
@@ -194,10 +249,9 @@
                                                    </select>
                                                </div>
                                                <div class="col">
-                                                   <button class="btn btn-dark btn-sm" onclick="filterTable()">Filter</button>
+                                                   <button class="btn btn-dark btn-sm" onclick="filterTableC()">Filter</button>
                                                </div>
                                            </div>
-
                                         </div>
 
                                         <table id="videoDetectionTable" class="table table-bordered table-sm">
@@ -233,6 +287,8 @@
                                             </tbody>
                                         </table>
 
+                                        {{ $videoDetections->links() }}
+
                                         <script>
                                             function filterTable() {
                                                 var userId = document.getElementById('filterUserId').value.toLowerCase();
@@ -261,6 +317,7 @@
                                                     }
                                                 }
                                             }
+
                                         </script>
 
                                     </div>
@@ -276,6 +333,23 @@
 
     </div>
     <!-- /.container-fluid -->
+
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('') }}"></script>
+
 
 
 @endsection

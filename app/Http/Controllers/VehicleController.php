@@ -35,7 +35,7 @@ class VehicleController extends Controller
             'model' => ['required', 'string', 'max:255'],
             'year' => ['required', 'string', 'max:255'],
             'engine_number' => ['required', 'string', 'max:255', 'unique:vehicles'],
-            'plate_number' => ['required', 'string', 'max:255', 'unique:vehicles'],
+            'plate_number' => ['required', 'string', 'regex:/^[A-Z]{3}\d{4}$/', 'max:255', 'unique:vehicles'],
         ]);
 
         Vehicle::create([

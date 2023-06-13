@@ -62,7 +62,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-gradient-primary text-white">
-                        <h5 class="modal-title " id="staticBackdropLabel">Add Driver</h5>
+                        <h5 class="modal-title " id="staticBackdropLabel">Add Color Markings</h5>
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="{{ route('markings.store') }}">

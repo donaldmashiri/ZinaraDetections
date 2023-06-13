@@ -109,7 +109,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="col">Signal Type</th>
-                                                        <td class="bg-danger text-white"> Red </td>
+                                                        <td class="bg-danger text-white"> -- </td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="col">Lane Position</th>
@@ -117,17 +117,17 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="col">Wheel Crossed Over</th>
-                                                        <td style="color: saddlebrown" class="font-weight-bolder">Yes</td>
+                                                        <td style="color: saddlebrown" class="font-weight-bolder">No</td>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Road Marking Color</th>
-                                                        <td id="road-marking-color"></td>
+                                                        <td id="road-marking-color">---</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Lane Crossing Alert</th>
-                                                        <td id="lane-crossing-alert"></td>
+                                                        <td id="lane-crossing-alert">--</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Driver's Tendencies</th>

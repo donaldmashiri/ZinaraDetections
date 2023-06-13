@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/table', function () {
+    return view('table');
+});
+
 Route::resource('detections', \App\Http\Controllers\DetectionsController::class);
 Route::resource('videodetects', \App\Http\Controllers\VideoDetectController::class);
 Route::resource('users', \App\Http\Controllers\UserController::class);
