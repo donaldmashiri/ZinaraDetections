@@ -188,7 +188,7 @@
                                            </tbody>
                                        </table>
 
-                                       {{ $cameraDetections->links() }}
+{{--                                       {{ $cameraDetections->links() }}--}}
 
                                    </div>
 
@@ -287,7 +287,7 @@
                                             </tbody>
                                         </table>
 
-                                        {{ $videoDetections->links() }}
+{{--                                        {{ $videoDetections->links() }}--}}
 
                                         <script>
                                             function filterTable() {

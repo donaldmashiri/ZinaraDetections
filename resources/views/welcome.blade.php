@@ -88,90 +88,10 @@
 <main id="main">
 
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p>Contact Us</p>
-            </div>
-
-            <div class="row">
-
-                <div class="col-lg-12" data-aos="fade-right" data-aos-delay="100">
-                    <div class="info">
-                        <div class="address">
-                            <i class="bi bi-geo-alt"></i>
-                            <h4>Location:</h4>
-                            <p>Gweru 4th street, Zimbabwe</p>
-                        </div>
-
-                        <div class="email">
-                            <i class="bi bi-envelope"></i>
-                            <h4>Email:</h4>
-                            <p>zinara@zinara.com</p>
-                        </div>
-
-                        <div class="phone">
-                            <i class="bi bi-phone"></i>
-                            <h4>Call:</h4>
-                            <p>07711171717</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-    </section><!-- End Contact Section -->
-
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-info">
-                        <h3>Zinara</h3>
-                        <p class="pb-3"><em>Zinara Customers Detection System</em></p>
-                        <p>
-                            Gweru, 4th Street, Zimbabwe <br>
-                           <br><br>
-                            <strong>Phone:</strong> +07754321657<br>
-                            <strong>Email:</strong> zinara@zinara.com<br>
-                        </p>
-                        <div class="social-links mt-3">
-                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="copyright">
@@ -182,7 +102,7 @@
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://bootstrapmade.com/">Calton</a>
         </div>
     </div>
 </footer><!-- End Footer -->
