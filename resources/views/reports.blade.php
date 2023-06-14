@@ -127,104 +127,7 @@
 
                         </div>
 
-                        <!-- Camera Row -->
-                        <div class="row">
-                           <div class="col-md-12">
-                               <div class="card">
-                                   <div class="card-header bg-gradient-dark">Camera Detection Reports</div>
-                                   <div class="card-body">
-                                       <div class="container">
-                                           <h6>Filter Options</h6>
-                                           <div class="row">
-                                               <div class="col">
-                                                   <input class="form-control form-group col" type="text" id="filterUserId" placeholder="User ID">
-                                               </div>
-                                               <div class="col">
-                                                   <input class="form-control form-group col" type="text" id="filterPlateNumber" placeholder="Plate Number">
-                                               </div>
-                                               <div class="col">
-                                                   <select class="form-control form-group col" id="filterStatus">
-                                                       <option value="">Select Status</option>
-                                                       <option value="inactive">Inactive</option>
-                                                       <option value="active">Active</option>
-                                                   </select>
-                                               </div>
-                                               <div class="col">
-                                                   <button class="btn btn-dark btn-sm" onclick="filterTable()">Filter</button>
-                                               </div>
-                                           </div>
-                                       </div>
 
-                                       <table id="cameraDetectionTable" class="table table-bordered table-sm">
-                                           <thead class="bg-gradient-light">
-                                           <tr>
-                                               <th scope="col">User ID</th>
-                                               <th scope="col">Plate #</th>
-                                               <th scope="col">Detection Type</th>
-                                               <th scope="col">Status</th>
-                                               <th scope="col">Signals Type</th>
-                                               <th scope="col">Lane</th>
-                                               <th scope="col">Wheels Crossed</th>
-                                               <th scope="col">Markings Color</th>
-                                               <th scope="col">Cross Alert</th>
-                                               <th scope="col">Driver tendencies</th>
-                                           </tr>
-                                           </thead>
-                                           <tbody>
-                                           @foreach($cameraDetections as $cameraDetection)
-                                               <tr>
-                                                   <th>00{{ $cameraDetection->user_id }}</th>
-                                                   <th>{{ $cameraDetection->plate_number }}</th>
-                                                   <th class="text-success">Camera Detection</th>
-                                                   <th>{{ $cameraDetection->status }}</th>
-                                                   <th>{{ $cameraDetection->signal_type }}</th>
-                                                   <th>{{ $cameraDetection->lane_position }}</th>
-                                                   <th>{{ $cameraDetection->wheel_crossed }}</th>
-                                                   <th>{{ $cameraDetection->marking_color }}</th>
-                                                   <th>{{ $cameraDetection->cross_alert }}</th>
-                                                   <th>{{ $cameraDetection->driver_tendencies }}</th>
-                                               </tr>
-                                           @endforeach
-                                           </tbody>
-                                       </table>
-
-{{--                                       {{ $cameraDetections->links() }}--}}
-
-                                   </div>
-
-                                   <script>
-                                       function filterTable() {
-                                           var userId = document.getElementById('filterUserId').value.toLowerCase();
-                                           var plateNumber = document.getElementById('filterPlateNumber').value.toLowerCase();
-                                           var status = document.getElementById('filterStatus').value.toLowerCase();
-                                           var table = document.getElementById('videoDetectionTable');
-                                           var rows = table.getElementsByTagName('tr');
-
-                                           for (var i = 0; i < rows.length; i++) {
-                                               var userIdCell = rows[i].getElementsByTagName('td')[0];
-                                               var plateNumberCell = rows[i].getElementsByTagName('td')[1];
-                                               var statusCell = rows[i].getElementsByTagName('td')[3];
-
-                                               if (userIdCell && plateNumberCell && statusCell) {
-                                                   var userIdValue = userIdCell.textContent || userIdCell.innerText;
-                                                   var plateNumberValue = plateNumberCell.textContent || plateNumberCell.innerText;
-                                                   var statusValue = statusCell.textContent || statusCell.innerText;
-
-                                                   if ((userIdValue.toLowerCase().indexOf(userId) > -1 || userId === '') &&
-                                                       (plateNumberValue.toLowerCase().indexOf(plateNumber) > -1 || plateNumber === '') &&
-                                                       (statusValue.toLowerCase() === status || status === '')) {
-                                                       rows[i].style.display = '';
-                                                   } else {
-                                                       rows[i].style.display = 'none';
-                                                   }
-                                               }
-                                           }
-                                       }
-                                   </script>
-
-                               </div>
-                           </div>
-                        </div>
 
                         <!-- Video Row -->
                         <div class="row mt-3">
@@ -249,7 +152,7 @@
                                                    </select>
                                                </div>
                                                <div class="col">
-                                                   <button class="btn btn-dark btn-sm" onclick="filterTableC()">Filter</button>
+                                                   <button class="btn btn-dark btn-sm" onclick="filterTable()">Filter</button>
                                                </div>
                                            </div>
                                         </div>
@@ -317,10 +220,56 @@
                                                     }
                                                 }
                                             }
-
                                         </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Camera Row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header bg-gradient-dark">Camera Detection Reports</div>
+                                    <div class="card-body">
+
+                                        <table id="cameraDetectionTable" class="table table-bordered table-sm">
+                                            <thead class="bg-gradient-light">
+                                            <tr>
+                                                <th scope="col">User ID</th>
+                                                <th scope="col">Plate #</th>
+                                                <th scope="col">Detection Type</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Signals Type</th>
+                                                <th scope="col">Lane</th>
+                                                <th scope="col">Wheels Crossed</th>
+                                                <th scope="col">Markings Color</th>
+                                                <th scope="col">Cross Alert</th>
+                                                <th scope="col">Driver tendencies</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($cameraDetections as $cameraDetection)
+                                                <tr>
+                                                    <th>00{{ $cameraDetection->user_id }}</th>
+                                                    <th>{{ $cameraDetection->plate_number }}</th>
+                                                    <th class="text-success">Camera Detection</th>
+                                                    <th>{{ $cameraDetection->status }}</th>
+                                                    <th>{{ $cameraDetection->signal_type }}</th>
+                                                    <th>{{ $cameraDetection->lane_position }}</th>
+                                                    <th>{{ $cameraDetection->wheel_crossed }}</th>
+                                                    <th>{{ $cameraDetection->marking_color }}</th>
+                                                    <th>{{ $cameraDetection->cross_alert }}</th>
+                                                    <th>{{ $cameraDetection->driver_tendencies }}</th>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        {{ $cameraDetections->links() }}
 
                                     </div>
+
                                 </div>
                             </div>
                         </div>

@@ -43,7 +43,7 @@ class HomeController extends Controller
         $markingsTotal = Marking::count();
         $cameraDetectionsTotal = CameraDetection::count();
         $videoDetectionsTotal = VideoDetection::count();
-        $cameraDetections = CameraDetection::all(); // Paginate with 10 items per page
+        $cameraDetections = CameraDetection::paginate(1); // Paginate with 10 items per page
         $videoDetections = VideoDetection::all();
         return view('reports', compact('usersTotal', 'vehiclesTotal', 'markingsTotal', 'videoDetectionsTotal', 'cameraDetectionsTotal',
             'cameraDetections', 'videoDetections'));
